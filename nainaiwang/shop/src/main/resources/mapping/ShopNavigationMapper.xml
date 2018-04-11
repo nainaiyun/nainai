@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nainai.mapper.ShopNavigationMapper">
+  <resultMap id="BaseResultMap" type="com.nainai.domain.ShopNavigation">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="shop_id" jdbcType="VARCHAR" property="shopId" />
+    <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+    <result column="all_products" jdbcType="VARCHAR" property="allProducts" />
+    <result column="is_products" jdbcType="INTEGER" property="isProducts" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="link_address" jdbcType="VARCHAR" property="linkAddress" />
+    <result column="is_link" jdbcType="INTEGER" property="isLink" />
+    <result column="is_show" jdbcType="INTEGER" property="isShow" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, shop_id, parent_id, all_products, is_products, name, link_address, is_link, is_show, 
+    sort, remarks, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shop_navigation
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from shop_navigation
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.nainai.domain.ShopNavigation">
+    insert into shop_navigation (id, shop_id, parent_id, 
+      all_products, is_products, name, 
+      link_address, is_link, is_show, 
+      sort, remarks, create_time, 
+      update_time)
+    values (#{id,jdbcType=VARCHAR}, #{shopId,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, 
+      #{allProducts,jdbcType=VARCHAR}, #{isProducts,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{linkAddress,jdbcType=VARCHAR}, #{isLink,jdbcType=INTEGER}, #{isShow,jdbcType=INTEGER}, 
+      #{sort,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nainai.domain.ShopNavigation">
+    insert into shop_navigation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="allProducts != null">
+        all_products,
+      </if>
+      <if test="isProducts != null">
+        is_products,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="linkAddress != null">
+        link_address,
+      </if>
+      <if test="isLink != null">
+        is_link,
+      </if>
+      <if test="isShow != null">
+        is_show,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="allProducts != null">
+        #{allProducts,jdbcType=VARCHAR},
+      </if>
+      <if test="isProducts != null">
+        #{isProducts,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="linkAddress != null">
+        #{linkAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="isLink != null">
+        #{isLink,jdbcType=INTEGER},
+      </if>
+      <if test="isShow != null">
+        #{isShow,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nainai.domain.ShopNavigation">
+    update shop_navigation
+    <set>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="allProducts != null">
+        all_products = #{allProducts,jdbcType=VARCHAR},
+      </if>
+      <if test="isProducts != null">
+        is_products = #{isProducts,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="linkAddress != null">
+        link_address = #{linkAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="isLink != null">
+        is_link = #{isLink,jdbcType=INTEGER},
+      </if>
+      <if test="isShow != null">
+        is_show = #{isShow,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nainai.domain.ShopNavigation">
+    update shop_navigation
+    set shop_id = #{shopId,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      all_products = #{allProducts,jdbcType=VARCHAR},
+      is_products = #{isProducts,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      link_address = #{linkAddress,jdbcType=VARCHAR},
+      is_link = #{isLink,jdbcType=INTEGER},
+      is_show = #{isShow,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

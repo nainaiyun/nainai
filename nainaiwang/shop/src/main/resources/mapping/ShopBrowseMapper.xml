@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nainai.mapper.ShopBrowseMapper">
+  <resultMap id="BaseResultMap" type="com.nainai.domain.ShopBrowse">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="shop_id" jdbcType="VARCHAR" property="shopId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="total_browsing" jdbcType="INTEGER" property="totalBrowsing" />
+    <result column="monthly_browsing" jdbcType="INTEGER" property="monthlyBrowsing" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, shop_id, name, total_browsing, monthly_browsing, remarks, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shop_browse
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from shop_browse
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.nainai.domain.ShopBrowse">
+    insert into shop_browse (id, shop_id, name, 
+      total_browsing, monthly_browsing, remarks, 
+      create_time, update_time)
+    values (#{id,jdbcType=VARCHAR}, #{shopId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{totalBrowsing,jdbcType=INTEGER}, #{monthlyBrowsing,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nainai.domain.ShopBrowse">
+    insert into shop_browse
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="totalBrowsing != null">
+        total_browsing,
+      </if>
+      <if test="monthlyBrowsing != null">
+        monthly_browsing,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="totalBrowsing != null">
+        #{totalBrowsing,jdbcType=INTEGER},
+      </if>
+      <if test="monthlyBrowsing != null">
+        #{monthlyBrowsing,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nainai.domain.ShopBrowse">
+    update shop_browse
+    <set>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="totalBrowsing != null">
+        total_browsing = #{totalBrowsing,jdbcType=INTEGER},
+      </if>
+      <if test="monthlyBrowsing != null">
+        monthly_browsing = #{monthlyBrowsing,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nainai.domain.ShopBrowse">
+    update shop_browse
+    set shop_id = #{shopId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      total_browsing = #{totalBrowsing,jdbcType=INTEGER},
+      monthly_browsing = #{monthlyBrowsing,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

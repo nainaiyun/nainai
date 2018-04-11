@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nainai.mapper.ShopSuthenticationMapper">
+  <resultMap id="BaseResultMap" type="com.nainai.domain.ShopSuthentication">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="shop_id" jdbcType="VARCHAR" property="shopId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="id_no" jdbcType="VARCHAR" property="idNo" />
+    <result column="qq_no" jdbcType="VARCHAR" property="qqNo" />
+    <result column="positive_id" jdbcType="VARCHAR" property="positiveId" />
+    <result column="back_id" jdbcType="VARCHAR" property="backId" />
+    <result column="business_license" jdbcType="VARCHAR" property="businessLicense" />
+    <result column="enclosure" jdbcType="VARCHAR" property="enclosure" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, shop_id, user_name, mobile_phone, email, id_no, qq_no, positive_id, back_id, 
+    business_license, enclosure, sort, remarks, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shop_suthentication
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from shop_suthentication
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.nainai.domain.ShopSuthentication">
+    insert into shop_suthentication (id, shop_id, user_name, 
+      mobile_phone, email, id_no, 
+      qq_no, positive_id, back_id, 
+      business_license, enclosure, sort, 
+      remarks, create_time, update_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{shopId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{mobilePhone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{idNo,jdbcType=VARCHAR}, 
+      #{qqNo,jdbcType=VARCHAR}, #{positiveId,jdbcType=VARCHAR}, #{backId,jdbcType=VARCHAR}, 
+      #{businessLicense,jdbcType=VARCHAR}, #{enclosure,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
+      #{remarks,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.nainai.domain.ShopSuthentication">
+    insert into shop_suthentication
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="idNo != null">
+        id_no,
+      </if>
+      <if test="qqNo != null">
+        qq_no,
+      </if>
+      <if test="positiveId != null">
+        positive_id,
+      </if>
+      <if test="backId != null">
+        back_id,
+      </if>
+      <if test="businessLicense != null">
+        business_license,
+      </if>
+      <if test="enclosure != null">
+        enclosure,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="idNo != null">
+        #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="qqNo != null">
+        #{qqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="positiveId != null">
+        #{positiveId,jdbcType=VARCHAR},
+      </if>
+      <if test="backId != null">
+        #{backId,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null">
+        #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="enclosure != null">
+        #{enclosure,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nainai.domain.ShopSuthentication">
+    update shop_suthentication
+    <set>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="idNo != null">
+        id_no = #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="qqNo != null">
+        qq_no = #{qqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="positiveId != null">
+        positive_id = #{positiveId,jdbcType=VARCHAR},
+      </if>
+      <if test="backId != null">
+        back_id = #{backId,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null">
+        business_license = #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="enclosure != null">
+        enclosure = #{enclosure,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nainai.domain.ShopSuthentication">
+    update shop_suthentication
+    set shop_id = #{shopId,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      id_no = #{idNo,jdbcType=VARCHAR},
+      qq_no = #{qqNo,jdbcType=VARCHAR},
+      positive_id = #{positiveId,jdbcType=VARCHAR},
+      back_id = #{backId,jdbcType=VARCHAR},
+      business_license = #{businessLicense,jdbcType=VARCHAR},
+      enclosure = #{enclosure,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

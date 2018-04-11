@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nainai.mapper.ProductsMapper">
+  <resultMap id="BaseResultMap" type="com.nainai.domain.Products">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="shop_id" jdbcType="VARCHAR" property="shopId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="cate_id" jdbcType="INTEGER" property="cateId" />
+    <result column="market_id" jdbcType="INTEGER" property="marketId" />
+    <result column="attribute" jdbcType="VARCHAR" property="attribute" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="produce_area" jdbcType="VARCHAR" property="produceArea" />
+    <result column="currency" jdbcType="INTEGER" property="currency" />
+    <result column="quantity" jdbcType="DECIMAL" property="quantity" />
+    <result column="freeze" jdbcType="DECIMAL" property="freeze" />
+    <result column="sell" jdbcType="DECIMAL" property="sell" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="classify_id" jdbcType="VARCHAR" property="classifyId" />
+    <result column="module_id" jdbcType="VARCHAR" property="moduleId" />
+    <result column="navigation_id" jdbcType="VARCHAR" property="navigationId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, shop_id, name, cate_id, market_id, attribute, unit, produce_area, currency, 
+    quantity, freeze, sell, create_time, sort, note, img, classify_id, module_id, navigation_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from products
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from products
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nainai.domain.Products">
+    insert into products (id, user_id, shop_id, 
+      name, cate_id, market_id, 
+      attribute, unit, produce_area, 
+      currency, quantity, freeze, 
+      sell, create_time, sort, 
+      note, img, classify_id, 
+      module_id, navigation_id)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{shopId,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{cateId,jdbcType=INTEGER}, #{marketId,jdbcType=INTEGER}, 
+      #{attribute,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{produceArea,jdbcType=VARCHAR}, 
+      #{currency,jdbcType=INTEGER}, #{quantity,jdbcType=DECIMAL}, #{freeze,jdbcType=DECIMAL}, 
+      #{sell,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, #{sort,jdbcType=INTEGER}, 
+      #{note,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, #{classifyId,jdbcType=VARCHAR}, 
+      #{moduleId,jdbcType=VARCHAR}, #{navigationId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nainai.domain.Products">
+    insert into products
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="cateId != null">
+        cate_id,
+      </if>
+      <if test="marketId != null">
+        market_id,
+      </if>
+      <if test="attribute != null">
+        attribute,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="produceArea != null">
+        produce_area,
+      </if>
+      <if test="currency != null">
+        currency,
+      </if>
+      <if test="quantity != null">
+        quantity,
+      </if>
+      <if test="freeze != null">
+        freeze,
+      </if>
+      <if test="sell != null">
+        sell,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+      <if test="classifyId != null">
+        classify_id,
+      </if>
+      <if test="moduleId != null">
+        module_id,
+      </if>
+      <if test="navigationId != null">
+        navigation_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cateId != null">
+        #{cateId,jdbcType=INTEGER},
+      </if>
+      <if test="marketId != null">
+        #{marketId,jdbcType=INTEGER},
+      </if>
+      <if test="attribute != null">
+        #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="produceArea != null">
+        #{produceArea,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null">
+        #{currency,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="freeze != null">
+        #{freeze,jdbcType=DECIMAL},
+      </if>
+      <if test="sell != null">
+        #{sell,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyId != null">
+        #{classifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleId != null">
+        #{moduleId,jdbcType=VARCHAR},
+      </if>
+      <if test="navigationId != null">
+        #{navigationId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nainai.domain.Products">
+    update products
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cateId != null">
+        cate_id = #{cateId,jdbcType=INTEGER},
+      </if>
+      <if test="marketId != null">
+        market_id = #{marketId,jdbcType=INTEGER},
+      </if>
+      <if test="attribute != null">
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="produceArea != null">
+        produce_area = #{produceArea,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null">
+        currency = #{currency,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="freeze != null">
+        freeze = #{freeze,jdbcType=DECIMAL},
+      </if>
+      <if test="sell != null">
+        sell = #{sell,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyId != null">
+        classify_id = #{classifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleId != null">
+        module_id = #{moduleId,jdbcType=VARCHAR},
+      </if>
+      <if test="navigationId != null">
+        navigation_id = #{navigationId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nainai.domain.Products">
+    update products
+    set user_id = #{userId,jdbcType=INTEGER},
+      shop_id = #{shopId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      cate_id = #{cateId,jdbcType=INTEGER},
+      market_id = #{marketId,jdbcType=INTEGER},
+      attribute = #{attribute,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      produce_area = #{produceArea,jdbcType=VARCHAR},
+      currency = #{currency,jdbcType=INTEGER},
+      quantity = #{quantity,jdbcType=DECIMAL},
+      freeze = #{freeze,jdbcType=DECIMAL},
+      sell = #{sell,jdbcType=DECIMAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      sort = #{sort,jdbcType=INTEGER},
+      note = #{note,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      classify_id = #{classifyId,jdbcType=VARCHAR},
+      module_id = #{moduleId,jdbcType=VARCHAR},
+      navigation_id = #{navigationId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

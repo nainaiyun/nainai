@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nainai.mapper.OrderSellMapper">
+  <resultMap id="BaseResultMap" type="com.nainai.domain.OrderSell">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="shop_id" jdbcType="VARCHAR" property="shopId" />
+    <result column="offer_no" jdbcType="VARCHAR" property="offerNo" />
+    <result column="offer_id" jdbcType="INTEGER" property="offerId" />
+    <result column="mode" jdbcType="INTEGER" property="mode" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="num" jdbcType="DECIMAL" property="num" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="pay_deposit" jdbcType="DECIMAL" property="payDeposit" />
+    <result column="buyer_deposit_payment" jdbcType="VARCHAR" property="buyerDepositPayment" />
+    <result column="pay_deposit_time" jdbcType="TIMESTAMP" property="payDepositTime" />
+    <result column="buyer_deposit_clientid" jdbcType="VARCHAR" property="buyerDepositClientid" />
+    <result column="pay_retainage" jdbcType="DECIMAL" property="payRetainage" />
+    <result column="retainage_payment" jdbcType="VARCHAR" property="retainagePayment" />
+    <result column="retainage_clientid" jdbcType="VARCHAR" property="retainageClientid" />
+    <result column="payment" jdbcType="INTEGER" property="payment" />
+    <result column="contract_status" jdbcType="INTEGER" property="contractStatus" />
+    <result column="seller_deposit" jdbcType="DECIMAL" property="sellerDeposit" />
+    <result column="seller_deposit_payment" jdbcType="VARCHAR" property="sellerDepositPayment" />
+    <result column="seller_deposit_clientid" jdbcType="VARCHAR" property="sellerDepositClientid" />
+    <result column="proof" jdbcType="VARCHAR" property="proof" />
+    <result column="jiesuan_prove" jdbcType="VARCHAR" property="jiesuanProve" />
+    <result column="reduce_amount" jdbcType="DECIMAL" property="reduceAmount" />
+    <result column="reduce_remark" jdbcType="VARCHAR" property="reduceRemark" />
+    <result column="invoice" jdbcType="INTEGER" property="invoice" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="is_lock" jdbcType="INTEGER" property="isLock" />
+    <result column="risk" jdbcType="VARCHAR" property="risk" />
+    <result column="complate_prove" jdbcType="VARCHAR" property="complateProve" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, shop_id, offer_no, offer_id, mode, order_no, num, amount, user_id, pay_deposit, 
+    buyer_deposit_payment, pay_deposit_time, buyer_deposit_clientid, pay_retainage, retainage_payment, 
+    retainage_clientid, payment, contract_status, seller_deposit, seller_deposit_payment, 
+    seller_deposit_clientid, proof, jiesuan_prove, reduce_amount, reduce_remark, invoice, 
+    create_time, end_time, is_lock, risk, complate_prove
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_sell
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_sell
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nainai.domain.OrderSell">
+    insert into order_sell (id, shop_id, offer_no, 
+      offer_id, mode, order_no, 
+      num, amount, user_id, 
+      pay_deposit, buyer_deposit_payment, pay_deposit_time, 
+      buyer_deposit_clientid, pay_retainage, retainage_payment, 
+      retainage_clientid, payment, contract_status, 
+      seller_deposit, seller_deposit_payment, seller_deposit_clientid, 
+      proof, jiesuan_prove, reduce_amount, 
+      reduce_remark, invoice, create_time, 
+      end_time, is_lock, risk, 
+      complate_prove)
+    values (#{id,jdbcType=INTEGER}, #{shopId,jdbcType=VARCHAR}, #{offerNo,jdbcType=VARCHAR}, 
+      #{offerId,jdbcType=INTEGER}, #{mode,jdbcType=INTEGER}, #{orderNo,jdbcType=VARCHAR}, 
+      #{num,jdbcType=DECIMAL}, #{amount,jdbcType=DECIMAL}, #{userId,jdbcType=INTEGER}, 
+      #{payDeposit,jdbcType=DECIMAL}, #{buyerDepositPayment,jdbcType=VARCHAR}, #{payDepositTime,jdbcType=TIMESTAMP}, 
+      #{buyerDepositClientid,jdbcType=VARCHAR}, #{payRetainage,jdbcType=DECIMAL}, #{retainagePayment,jdbcType=VARCHAR}, 
+      #{retainageClientid,jdbcType=VARCHAR}, #{payment,jdbcType=INTEGER}, #{contractStatus,jdbcType=INTEGER}, 
+      #{sellerDeposit,jdbcType=DECIMAL}, #{sellerDepositPayment,jdbcType=VARCHAR}, #{sellerDepositClientid,jdbcType=VARCHAR}, 
+      #{proof,jdbcType=VARCHAR}, #{jiesuanProve,jdbcType=VARCHAR}, #{reduceAmount,jdbcType=DECIMAL}, 
+      #{reduceRemark,jdbcType=VARCHAR}, #{invoice,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{isLock,jdbcType=INTEGER}, #{risk,jdbcType=VARCHAR}, 
+      #{complateProve,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nainai.domain.OrderSell">
+    insert into order_sell
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="offerNo != null">
+        offer_no,
+      </if>
+      <if test="offerId != null">
+        offer_id,
+      </if>
+      <if test="mode != null">
+        mode,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="payDeposit != null">
+        pay_deposit,
+      </if>
+      <if test="buyerDepositPayment != null">
+        buyer_deposit_payment,
+      </if>
+      <if test="payDepositTime != null">
+        pay_deposit_time,
+      </if>
+      <if test="buyerDepositClientid != null">
+        buyer_deposit_clientid,
+      </if>
+      <if test="payRetainage != null">
+        pay_retainage,
+      </if>
+      <if test="retainagePayment != null">
+        retainage_payment,
+      </if>
+      <if test="retainageClientid != null">
+        retainage_clientid,
+      </if>
+      <if test="payment != null">
+        payment,
+      </if>
+      <if test="contractStatus != null">
+        contract_status,
+      </if>
+      <if test="sellerDeposit != null">
+        seller_deposit,
+      </if>
+      <if test="sellerDepositPayment != null">
+        seller_deposit_payment,
+      </if>
+      <if test="sellerDepositClientid != null">
+        seller_deposit_clientid,
+      </if>
+      <if test="proof != null">
+        proof,
+      </if>
+      <if test="jiesuanProve != null">
+        jiesuan_prove,
+      </if>
+      <if test="reduceAmount != null">
+        reduce_amount,
+      </if>
+      <if test="reduceRemark != null">
+        reduce_remark,
+      </if>
+      <if test="invoice != null">
+        invoice,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="isLock != null">
+        is_lock,
+      </if>
+      <if test="risk != null">
+        risk,
+      </if>
+      <if test="complateProve != null">
+        complate_prove,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="offerNo != null">
+        #{offerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="offerId != null">
+        #{offerId,jdbcType=INTEGER},
+      </if>
+      <if test="mode != null">
+        #{mode,jdbcType=INTEGER},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="payDeposit != null">
+        #{payDeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="buyerDepositPayment != null">
+        #{buyerDepositPayment,jdbcType=VARCHAR},
+      </if>
+      <if test="payDepositTime != null">
+        #{payDepositTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buyerDepositClientid != null">
+        #{buyerDepositClientid,jdbcType=VARCHAR},
+      </if>
+      <if test="payRetainage != null">
+        #{payRetainage,jdbcType=DECIMAL},
+      </if>
+      <if test="retainagePayment != null">
+        #{retainagePayment,jdbcType=VARCHAR},
+      </if>
+      <if test="retainageClientid != null">
+        #{retainageClientid,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null">
+        #{payment,jdbcType=INTEGER},
+      </if>
+      <if test="contractStatus != null">
+        #{contractStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sellerDeposit != null">
+        #{sellerDeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerDepositPayment != null">
+        #{sellerDepositPayment,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerDepositClientid != null">
+        #{sellerDepositClientid,jdbcType=VARCHAR},
+      </if>
+      <if test="proof != null">
+        #{proof,jdbcType=VARCHAR},
+      </if>
+      <if test="jiesuanProve != null">
+        #{jiesuanProve,jdbcType=VARCHAR},
+      </if>
+      <if test="reduceAmount != null">
+        #{reduceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="reduceRemark != null">
+        #{reduceRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="invoice != null">
+        #{invoice,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isLock != null">
+        #{isLock,jdbcType=INTEGER},
+      </if>
+      <if test="risk != null">
+        #{risk,jdbcType=VARCHAR},
+      </if>
+      <if test="complateProve != null">
+        #{complateProve,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nainai.domain.OrderSell">
+    update order_sell
+    <set>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="offerNo != null">
+        offer_no = #{offerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="offerId != null">
+        offer_id = #{offerId,jdbcType=INTEGER},
+      </if>
+      <if test="mode != null">
+        mode = #{mode,jdbcType=INTEGER},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="payDeposit != null">
+        pay_deposit = #{payDeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="buyerDepositPayment != null">
+        buyer_deposit_payment = #{buyerDepositPayment,jdbcType=VARCHAR},
+      </if>
+      <if test="payDepositTime != null">
+        pay_deposit_time = #{payDepositTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buyerDepositClientid != null">
+        buyer_deposit_clientid = #{buyerDepositClientid,jdbcType=VARCHAR},
+      </if>
+      <if test="payRetainage != null">
+        pay_retainage = #{payRetainage,jdbcType=DECIMAL},
+      </if>
+      <if test="retainagePayment != null">
+        retainage_payment = #{retainagePayment,jdbcType=VARCHAR},
+      </if>
+      <if test="retainageClientid != null">
+        retainage_clientid = #{retainageClientid,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null">
+        payment = #{payment,jdbcType=INTEGER},
+      </if>
+      <if test="contractStatus != null">
+        contract_status = #{contractStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sellerDeposit != null">
+        seller_deposit = #{sellerDeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerDepositPayment != null">
+        seller_deposit_payment = #{sellerDepositPayment,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerDepositClientid != null">
+        seller_deposit_clientid = #{sellerDepositClientid,jdbcType=VARCHAR},
+      </if>
+      <if test="proof != null">
+        proof = #{proof,jdbcType=VARCHAR},
+      </if>
+      <if test="jiesuanProve != null">
+        jiesuan_prove = #{jiesuanProve,jdbcType=VARCHAR},
+      </if>
+      <if test="reduceAmount != null">
+        reduce_amount = #{reduceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="reduceRemark != null">
+        reduce_remark = #{reduceRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="invoice != null">
+        invoice = #{invoice,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isLock != null">
+        is_lock = #{isLock,jdbcType=INTEGER},
+      </if>
+      <if test="risk != null">
+        risk = #{risk,jdbcType=VARCHAR},
+      </if>
+      <if test="complateProve != null">
+        complate_prove = #{complateProve,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nainai.domain.OrderSell">
+    update order_sell
+    set shop_id = #{shopId,jdbcType=VARCHAR},
+      offer_no = #{offerNo,jdbcType=VARCHAR},
+      offer_id = #{offerId,jdbcType=INTEGER},
+      mode = #{mode,jdbcType=INTEGER},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      num = #{num,jdbcType=DECIMAL},
+      amount = #{amount,jdbcType=DECIMAL},
+      user_id = #{userId,jdbcType=INTEGER},
+      pay_deposit = #{payDeposit,jdbcType=DECIMAL},
+      buyer_deposit_payment = #{buyerDepositPayment,jdbcType=VARCHAR},
+      pay_deposit_time = #{payDepositTime,jdbcType=TIMESTAMP},
+      buyer_deposit_clientid = #{buyerDepositClientid,jdbcType=VARCHAR},
+      pay_retainage = #{payRetainage,jdbcType=DECIMAL},
+      retainage_payment = #{retainagePayment,jdbcType=VARCHAR},
+      retainage_clientid = #{retainageClientid,jdbcType=VARCHAR},
+      payment = #{payment,jdbcType=INTEGER},
+      contract_status = #{contractStatus,jdbcType=INTEGER},
+      seller_deposit = #{sellerDeposit,jdbcType=DECIMAL},
+      seller_deposit_payment = #{sellerDepositPayment,jdbcType=VARCHAR},
+      seller_deposit_clientid = #{sellerDepositClientid,jdbcType=VARCHAR},
+      proof = #{proof,jdbcType=VARCHAR},
+      jiesuan_prove = #{jiesuanProve,jdbcType=VARCHAR},
+      reduce_amount = #{reduceAmount,jdbcType=DECIMAL},
+      reduce_remark = #{reduceRemark,jdbcType=VARCHAR},
+      invoice = #{invoice,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      is_lock = #{isLock,jdbcType=INTEGER},
+      risk = #{risk,jdbcType=VARCHAR},
+      complate_prove = #{complateProve,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
